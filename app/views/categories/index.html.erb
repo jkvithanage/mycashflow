@@ -1,0 +1,9 @@
+<main class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Categories</h1>
+    <%= link_to "New category", new_category_path, class: 'btn btn-primary' %>
+  </div>
+  <div class="list-group mt-3">
+    <%= render @categories %>
+  </div>
+</main>
