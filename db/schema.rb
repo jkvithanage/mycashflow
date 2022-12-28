@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_28_090738) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_28_220136) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.integer "type", default: 0
-    t.string "name"
+    t.integer "acc_type", default: 0
+    t.string "acc_name"
     t.integer "bank_name", default: 0
     t.string "owner_name"
     t.decimal "current_balance"
@@ -33,8 +33,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_090738) do
   create_table "transactions", force: :cascade do |t|
     t.datetime "date"
     t.string "description"
-    t.integer "type"
-    t.decimal "amount"
+    t.integer "tx_type"
+    t.decimal "tx_amount"
     t.string "notes"
     t.bigint "account_id", null: false
     t.bigint "category_id", null: false
