@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 1
+  name: MyString
+  bank_name: 1
+  owner_name: MyString
+  current_balance: 9.99
+  user: one
+
+two:
+  type: 1
+  name: MyString
+  bank_name: 1
+  owner_name: MyString
+  current_balance: 9.99
+  user: two
