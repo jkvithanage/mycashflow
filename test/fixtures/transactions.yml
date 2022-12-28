@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2022-12-28 20:07:38
+  description: MyString
+  type: 1
+  amount: 9.99
+  notes: MyString
+  account: one
+  category: one
+
+two:
+  date: 2022-12-28 20:07:38
+  description: MyString
+  type: 1
+  amount: 9.99
+  notes: MyString
+  account: two
+  category: two
