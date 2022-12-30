@@ -3,7 +3,11 @@
     <%= category.name %>
   </div>
   <div>
-    <%= link_to 'Edit', edit_category_path(category) %>
-    <%= link_to 'Delete', category %>
+    <%= link_to edit_category_path(category), class: 'btn btn-outline-dark' do %>
+      <i class="bi bi-pencil-square"></i>
+    <% end %>
+    <%= link_to category_path(category), class: 'btn btn-outline-danger', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,18 @@
+<tr>
+  <th scope="row"><%= transaction_counter + 1 %></th>
+  <td><%= transaction.date.to_date %></td>
+  <td><%= transaction.description %></td>
+  <td><%= transaction.tx_type %></td>
+  <td><%= transaction.tx_amount %></td>
+  <td><%= Category.find(transaction.category_id).name %></td>
+  <td><%= Account.find(transaction.account_id).acc_name %></td>
+  <td><%= transaction.notes %></td>
+  <td>
+    <%= link_to edit_transaction_path(transaction), class: 'btn btn-outline-dark' do %>
+      <i class="bi bi-pencil-square"></i>
+    <% end %>
+    <%= link_to transaction_path(transaction), class: 'btn btn-outline-danger', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
+  </td>
+</tr>
