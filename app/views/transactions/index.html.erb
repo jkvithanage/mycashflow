@@ -1,0 +1,24 @@
+<main class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Transactions</h1>
+    <%= link_to "New transaction", new_transaction_path, class: 'btn btn-primary' %>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Description</th>
+        <th scope="col">Type</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Category</th>
+        <th scope="col">Account</th>
+        <th scope="col">Notes</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @transactions %>
+    </tbody>
+  </table>
+</main>
