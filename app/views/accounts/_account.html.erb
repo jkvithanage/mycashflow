@@ -1,0 +1,11 @@
+<div class="col-4 d-flex">
+  <div class="account-card card p-2  justify-content-center align-items-center flex-fill">
+    <p><%= account.acc_name %></p>
+    <h5><%= account.owner_name %></h5>
+    <p><%= account.acc_type %></p>
+    <p><%= account.bank_name %> (<%= account.acc_number %>)</p>
+    <p><%= account.current_balance %></p>
+    <%= link_to "Edit", edit_account_path(account), class: 'btn btn-outline-dark w-100' %>
+    <%= link_to "Delete", account_path(account), class: 'btn btn-outline-danger w-100 mt-2', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<main class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Accounts</h1>
+    <%= link_to "New account", new_account_path, class: 'btn btn-primary' %>
+  </div>
+  <div class="row g-3 my-3">
+    <%= render @accounts %>
+  </div>
+</main>
