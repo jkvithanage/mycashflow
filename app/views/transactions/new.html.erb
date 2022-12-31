@@ -1,4 +1,7 @@
 <div class="container">
   <h1>Add new transaction</h1>
   <%= render 'form', transaction: @transaction %>
+  <hr>
+  <h2>Import transactions from CSV</h2>
+  <%= render 'import', transaction: @transaction %>
 </div>
