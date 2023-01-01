@@ -1,5 +1,3 @@
-require 'csv'
-
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
@@ -15,17 +13,11 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    if params[:transaction][:file].present?
-      import(params[:transaction][:file])
-      flash[:notice] = "File uploaded successfully"
-      redirect_to transactions_path
+    @transaction = Transaction.new(transaction_params)
+    if @transaction.save
+      redirect_to transactions_path, notice: "Transaction was succesfully created."
     else
-      @transaction = Transaction.new(transaction_params)
-      if @transaction.save
-        redirect_to transactions_path, notice: "Transaction was succesfully created."
-      else
-        render :new, status: :unprocessable_entity
-      end
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -45,6 +37,16 @@ class TransactionsController < ApplicationController
     redirect_to transactions_path, status: :see_other, alert: "Transaction was deleted successfully."
   end
 
+  def import
+    file = params[:transaction][:file]
+    if file.content_type == 'text/csv'
+      ImportTransactionsService.new.call(file, params[:transaction][:account_id])
+      redirect_to transactions_path, notice: 'Transactions imported successfully.'
+    else
+      redirect_to new_transaction_path, notice: 'Only CSV files accepted.'
+    end
+  end
+
   private
 
   def transaction_params
@@ -53,23 +55,5 @@ class TransactionsController < ApplicationController
 
   def set_transaction
     @transaction = Transaction.find(params[:id])
-  end
-
-  def import(file)
-    CSV.foreach(file.path, headers: true) do |row|
-      tx_hash = Transaction.new
-      tx_hash.account_id = params[:transaction][:account_id]
-      tx_hash.date = row[1]
-      tx_hash.description = row[2]
-      if row[3].nil?
-        tx_hash.tx_type = 'Credit'
-        tx_hash.tx_amount = row[4]
-      else
-        tx_hash.tx_type = 'Debit'
-        tx_hash.tx_amount = row[3]
-      end
-      tx_hash.category_id = 1
-      tx_hash.save
-    end
   end
 end
