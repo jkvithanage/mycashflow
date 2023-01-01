@@ -3,5 +3,9 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :accounts
-  resources :transactions
+  resources :transactions do
+    collection do
+      post :import
+    end
+  end
 end
