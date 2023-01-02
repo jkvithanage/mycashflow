@@ -1,6 +1,6 @@
 <%= simple_form_for transaction do |f| %>
   <% if transaction.errors.any? %>
-    <div class="error-message">
+    <div class="error-message alert alert-danger alert-dismissible fade show">
       <%= transaction.errors.full_messages.to_sentence.capitalize %>
     </div>
   <% end %>
