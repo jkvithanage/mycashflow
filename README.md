@@ -1,6 +1,6 @@
-A personal finance management application
+# A personal finance management application
 
-TODOs:
+**TODOs:**
 - Authentication/Authorization
 - Analytics/Summary page
 - Styling
