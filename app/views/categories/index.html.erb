@@ -1,9 +1,16 @@
 <main class="container">
   <div class="d-flex justify-content-between align-items-center">
     <h1>Categories</h1>
-    <%= link_to "New category", new_category_path, class: 'btn btn-primary' %>
   </div>
-  <div class="row g-3 my-3">
+  <%= turbo_frame_tag 'categories', class: 'row g-3 my-3' do %>
+    <div class="col-4 d-flex">
+      <%= turbo_frame_tag Category.new, class: 'card flex-fill border-0' do %>
+        <%= link_to new_category_path,
+            class: 'border border-primary rounded p-2 text-center text-primary text-body-emphasis text-decoration-none' do %>
+          <i class="bi bi-plus"></i> Add new
+        <% end %>
+      <% end %>
+    </div>
     <%= render @categories %>
-  </div>
+  <% end %>
 </main>
