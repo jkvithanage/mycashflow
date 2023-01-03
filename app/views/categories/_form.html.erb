@@ -1,9 +1,12 @@
 <%= simple_form_for category, wrapper: :input_group do |f| %>
   <%= f.error_notification %>
   <%= f.input :name, label: false do %>
-    <%= f.input_field :name, class: "form-control" %>
+    <%= f.input_field :name, autofocus: true, class: "form-control" %>
     <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
       <i class="bi bi-check"></i>
+    <% end %>
+    <%= link_to categories_path, class: "btn btn-danger" do %>
+      <i class="bi bi-x"></i>
     <% end %>
   <% end %>
 <% end %>
