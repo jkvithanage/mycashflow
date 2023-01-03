@@ -3,10 +3,10 @@
     <div class="d-flex justify-content-between align-items-center w-100">
       <p class="m-0"><%= account.acc_name %></p>
       <div class="d-flex align-self-end">
-        <%= link_to edit_account_path(account) do %>
+        <%= link_to edit_account_path(account), data: { turbo_frame: 'modal' } do %>
           <i class="bi bi-pencil-square"></i>
         <% end %>
-        <%= link_to account_path(account), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+        <%= link_to account_path(account), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-danger' do %>
           <i class="bi bi-trash"></i>
         <% end %>
       </div>

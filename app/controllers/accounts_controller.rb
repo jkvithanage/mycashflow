@@ -34,7 +34,7 @@ class AccountsController < ApplicationController
 
   def destroy
     @account.destroy
-    redirect_to accounts_path, status: :see_other, alert: "Account was deleted successfully."
+    redirect_to accounts_path, notice: "Account was deleted successfully."
   end
 
   private

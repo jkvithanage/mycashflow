@@ -1,4 +1,8 @@
 <div class="container">
-  <h1>Add new account</h1>
-  <%= render 'form', account: @account %>
+  <%= turbo_frame_tag 'modal' do %>
+    <div class="modal-body">
+      <h2>Add new account</h2>
+      <%= render 'form', account: @account %>
+    </div>
+  <% end %>
 </div>
