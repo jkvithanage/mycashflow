@@ -37,6 +37,10 @@ class TransactionsController < ApplicationController
     redirect_to transactions_path, status: :see_other, alert: "Transaction was deleted successfully."
   end
 
+  def read
+    @transaction = Transaction.new
+  end
+
   def import
     file = params[:transaction][:file]
     if file.content_type == 'text/csv'

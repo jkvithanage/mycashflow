@@ -1,7 +1,10 @@
 <main class="container">
   <div class="d-flex justify-content-between align-items-center">
     <h1>Transactions</h1>
-    <%= link_to "New transaction", new_transaction_path, class: 'btn btn-primary' %>
+    <div>
+      <%= link_to "New transaction", new_transaction_path, class: 'btn btn-primary' %>
+      <%= link_to "Import transactions", read_transactions_path, class: 'btn btn-secondary' %>
+    </div>
   </div>
   <table class="table table-striped">
     <thead>

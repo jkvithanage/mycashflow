@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :accounts
   resources :transactions do
     collection do
+      get :read
       post :import
     end
   end
