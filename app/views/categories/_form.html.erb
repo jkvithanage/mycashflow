@@ -1,9 +1,9 @@
-<%= simple_form_for category do |f| %>
-  <% if category.errors.any? %>
-    <div class="error-message">
-      <%= category.errors.full_messages.to_sentence.capitalize %>
-    </div>
+<%= simple_form_for category, wrapper: :input_group do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, label: false do %>
+    <%= f.input_field :name, class: "form-control" %>
+    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+      <i class="bi bi-check"></i>
+    <% end %>
   <% end %>
-  <%= f.input :name, class: 'form-control', autofocus: true, label: false %>
-  <%= f.button :submit, class: "btn btn-outline-primary" %>
 <% end %>

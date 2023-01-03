@@ -1,3 +1,6 @@
 <div class="container">
-  <%= render 'form', category: @category %>
+  <h1>Add new category</h1>
+  <%= turbo_frame_tag @category do %>
+    <%= render 'form', category: @category %>
+  <% end %>
 </div>
