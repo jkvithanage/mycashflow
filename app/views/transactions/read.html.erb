@@ -1,4 +1,8 @@
 <div class="container">
-  <h2>Import transactions from CSV</h2>
-  <%= render 'import', transaction: @transaction %>
+  <%= turbo_frame_tag 'modal' do %>
+    <div class="modal-body">
+      <h2>Import transactions from CSV</h2>
+      <%= render 'import', transaction: @transaction %>
+    </div>
+  <% end %>
 </div>

@@ -1,4 +1,8 @@
 <div class="container">
-  <h1>Add new transaction</h1>
-  <%= render 'form', transaction: @transaction %>
+  <%= turbo_frame_tag 'modal' do %>
+    <div class="modal-body">
+      <h1>Add new transaction</h1>
+      <%= render 'form', transaction: @transaction %>
+    </div>
+  <% end %>
 </div>

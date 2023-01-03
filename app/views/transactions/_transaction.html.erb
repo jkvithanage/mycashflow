@@ -8,7 +8,7 @@
   <td><%= Account.find(transaction.account_id).acc_name %></td>
   <td><%= transaction.notes %></td>
   <td>
-    <%= link_to edit_transaction_path(transaction), class: 'btn btn-outline-dark' do %>
+    <%= link_to edit_transaction_path(transaction), class: 'btn btn-outline-dark', data: { turbo_frame: 'modal' } do %>
       <i class="bi bi-pencil-square"></i>
     <% end %>
     <%= link_to transaction_path(transaction), class: 'btn btn-outline-danger', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>

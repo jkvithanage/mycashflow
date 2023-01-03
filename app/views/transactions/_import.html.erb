@@ -2,5 +2,5 @@
   <%= f.association :account, label_method: :acc_name, value_method: :id, prompt: "Choose account"%>
   <%= f.label :file, "Upload CSV File" %>
   <%= f.file_field :file, class: 'form-control', accept: '.csv', required: true %>
-  <%= f.button :submit, 'Import', class: 'btn btn-primary mt-3' %>
+  <%= f.button :submit, 'Import transactions', class: 'btn btn-primary mt-3' %>
 <% end %>
