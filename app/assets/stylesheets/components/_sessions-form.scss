@@ -1,12 +1,15 @@
 .form-signin {
-  max-width: 330px;
+  max-width: 430px;
   padding: 15px;
 }
 
 .sessions {
-  min-height: 90vh;
   display: flex;
   align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
+}
+
+.sessions {
+  a {
+    text-decoration: none;
+  }
 }
