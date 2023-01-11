@@ -15,7 +15,8 @@ class ImportTransactionsService
         tx_hash.tx_amount = row[3]
       end
       tx_hash.category_id = 1
-      tx_hash.save
+
+      Transaction.update_account_balance(tx_hash) if tx_hash.save
     end
   end
 end
