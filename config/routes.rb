@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
+  get 'dashboard/show'
   devise_for :users
-  root 'accounts#index'
+
+  authenticated :user do
+    root to: 'dashboard#show', as: :user_root
+  end
+
+  devise_scope :user do
+    root to: 'devise/sessions#new'
+  end
 
   resources :categories
   resources :accounts
