@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = Category.ordered
+    @categories = policy_scope(Category)
   end
 
   def show
@@ -10,11 +10,13 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    authorize @category
   end
 
   def create
     @category = Category.new(category_params)
     @category.user = current_user
+    authorize @category
 
     if @category.save
       respond_to do |format|
@@ -53,5 +55,6 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = Category.find(params[:id])
+    authorize @category
   end
 end

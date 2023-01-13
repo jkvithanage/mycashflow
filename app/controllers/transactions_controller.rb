@@ -1,8 +1,9 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  skip_after_action :verify_authorized, only: [:import, :read]
 
   def index
-    @transactions = Transaction.ordered
+    @transactions = policy_scope(Transaction)
   end
 
   def show
@@ -10,6 +11,7 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
+    authorize @transaction
   end
 
   def create
@@ -62,5 +64,6 @@ class TransactionsController < ApplicationController
 
   def set_transaction
     @transaction = Transaction.find(params[:id])
+    authorize @transaction
   end
 end
