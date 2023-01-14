@@ -5,6 +5,4 @@ Demo: https://finmanager.fly.dev \
 Demo login: test@test.com : secret
 
 **TODOs:**
-- Authentication/Authorization
-- Analytics/Summary page
-- Styling
+- Dashboard page
