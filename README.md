@@ -1,4 +1,4 @@
-# FinManager
+# Finance Manager
 **A personal finance management application**
 
 Demo: https://finmanager.fly.dev \
