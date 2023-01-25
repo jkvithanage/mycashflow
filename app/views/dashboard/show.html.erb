@@ -1,2 +1,20 @@
-<h1>Dashboard#show</h1>
-<p>Find me in app/views/dashboard/show.html.erb</p>
+<div class="container">
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col">
+        <div class="page-pretitle">
+          Overview
+        </div>
+        <h2 class="page-title">
+          Dashboard
+        </h2>
+      </div>
+      <div class="col-auto ms-auto">
+        <div class="btn-list">
+          <%= link_to "New transaction", new_transaction_path, data: { turbo_frame: 'modal' }, class: 'btn btn-primary' %>
+          <%= link_to "Import transactions", read_transactions_path, data: { turbo_frame: 'modal' }, class: 'btn btn-secondary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
