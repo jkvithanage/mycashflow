@@ -1,6 +1,6 @@
 <%= simple_form_for(transaction, method: :post, url: import_transactions_path) do |f| %>
   <%= f.association :account, collection: current_user.accounts, label_method: :acc_name, value_method: :id, prompt: "Choose account"%>
-  <%= f.label :file, "Upload CSV File" %>
+  <%= f.label :file, "Upload CSV File", class: 'form-label' %>
   <%= f.file_field :file, class: 'form-control', accept: '.csv', required: true %>
-  <%= f.button :submit, 'Import transactions', class: 'btn btn-primary mt-3' %>
+  <%= f.button :submit, 'Import transactions', class: 'btn btn-primary mt-3 w-100' %>
 <% end %>
