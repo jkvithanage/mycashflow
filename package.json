@@ -6,6 +6,7 @@
     "@hotwired/turbo-rails": "^7.2.4",
     "@popperjs/core": "^2.11.6",
     "@tabler/core": "^1.0.0-beta16",
+    "apexcharts": "^3.37.0",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "esbuild": "^0.16.12",

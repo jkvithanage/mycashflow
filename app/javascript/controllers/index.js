@@ -7,6 +7,9 @@ import { application } from "./application"
 import AlertController from "./alert_controller"
 application.register("alert", AlertController)
 
+import ApexchartsController from "./apexcharts_controller"
+application.register("apexcharts", ApexchartsController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
