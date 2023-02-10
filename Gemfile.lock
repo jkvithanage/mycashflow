@@ -54,6 +54,9 @@ GEM
     activerecord (7.0.4)
       activemodel (= 7.0.4)
       activesupport (= 7.0.4)
+    activerecord-postgres_enum (2.0.1)
+      activerecord (>= 5.2)
+      pg
     activestorage (7.0.4)
       actionpack (= 7.0.4)
       activejob (= 7.0.4)
@@ -246,6 +249,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord-postgres_enum
   bootsnap
   capybara
   cssbundling-rails

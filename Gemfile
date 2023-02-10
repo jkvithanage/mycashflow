@@ -82,3 +82,5 @@ gem "devise"
 gem "pundit"
 
 gem "groupdate"
+
+gem 'activerecord-postgres_enum'
