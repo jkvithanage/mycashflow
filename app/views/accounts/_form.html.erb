@@ -1,9 +1,9 @@
 <%= simple_form_for account do |f| %>
   <%= f.error_notification %>
-  <%= f.input :acc_name, label: 'Account name' %>
-  <%= f.input :acc_type, label: 'Account type', collection: ['Checking', 'Savings'] %>
-  <%= f.input :bank_name, collection: ['Westpac'] %>
-  <%= f.input :acc_number, label: 'Account number' %>
+  <%= f.input :name, label: 'Account name' %>
+  <%= f.input :account_type, label: 'Account type', collection: Account.account_types %>
+  <%= f.input :bank_name, collection: Account.bank_names.values %>
+  <%= f.input :account_number, label: 'Account number' %>
   <%= f.input :owner_name %>
   <%= f.input :current_balance %>
   <%= f.button :submit, class: "mt-3 btn btn-primary w-100" %>

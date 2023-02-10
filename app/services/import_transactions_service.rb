@@ -10,19 +10,18 @@ class ImportTransactionsService
       tx_hash.date = row[1]
       tx_hash.description = row[2]
       if row[3].nil?
-        tx_hash.tx_type = 'Credit'
-        tx_hash.tx_amount = row[4]
+        tx_hash.transaction_type = 'credit'
+        tx_hash.amount = row[4]
       else
-        tx_hash.tx_type = 'Debit'
-        tx_hash.tx_amount = row[3]
+        tx_hash.transaction_type = 'debit'
+        tx_hash.amount = row[3]
       end
       tx_hash.category = if user.categories.find_by(name: 'Imported').present?
                           user.categories.find_by(name: 'Imported')
                          else
                           Category.create(name: 'Imported', user:)
                          end
-      # raise
-      Transaction.update_account_balance(tx_hash) if tx_hash.save
+      tx_hash.save
     end
   end
 end
