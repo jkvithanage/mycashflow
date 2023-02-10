@@ -16,6 +16,7 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
+    @transaction.category = Category.find_or_create_by(name: 'Uncategorized', user: current_user) if params[:transaction][:category].nil?
     if @transaction.save
       Transaction.update_account_balance(@transaction)
       redirect_to transactions_path, notice: "Transaction was succesfully created."
@@ -29,7 +30,6 @@ class TransactionsController < ApplicationController
 
   def update
     if @transaction.update(transaction_params)
-      Transaction.update_account_balance(@transaction)
       redirect_to transactions_path, notice: "Transaction was succesfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -38,7 +38,6 @@ class TransactionsController < ApplicationController
 
   def destroy
     @transaction.destroy
-    Transaction.update_account_balance(@transaction)
     redirect_to transactions_path, status: :see_other, alert: "Transaction was deleted successfully."
   end
 
@@ -59,7 +58,7 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:date, :description, :tx_type, :tx_amount, :notes, :account_id, :category_id, :file)
+    params.require(:transaction).permit(:date, :description, :transaction_type, :amount, :notes, :account_id, :category_id, :file)
   end
 
   def set_transaction

@@ -1,44 +1,89 @@
-import { Controller } from "@hotwired/stimulus"
-import ApexCharts from 'apexcharts'
+import { Controller } from "@hotwired/stimulus";
+import ApexCharts from "apexcharts";
 
 // Connects to data-controller="apexcharts"
 export default class extends Controller {
-  initialize() {
+  static targets = ["summaryChart"];
+  static values = {
+    labels: Array,
+    series: Array
+  }
 
-    var options = {
-      series: [{
-        name: "Desktops",
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-    }],
+  initialize() {
+    console.log(this.seriesValue);
+    const options = {
       chart: {
-      height: 350,
-      type: 'line',
-      zoom: {
-        enabled: false
-      }
-    },
-    dataLabels: {
-      enabled: false
-    },
-    stroke: {
-      curve: 'straight'
-    },
-    title: {
-      text: 'Product Trends by Month',
-      align: 'left'
-    },
-    grid: {
-      row: {
-        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-        opacity: 0.5
-      },
-    },
-    xaxis: {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-    }
+  			type: "line",
+  			fontFamily: 'inherit',
+  			height: 500,
+  			parentHeightOffset: 0,
+  			toolbar: {
+  				show: false,
+  			},
+  			animations: {
+  				enabled: false
+  			},
+  		},
+  		fill: {
+  			opacity: 1,
+  		},
+  		stroke: {
+  			width: 2,
+  			lineCap: "round",
+  			curve: "smooth",
+  		},
+  		series: [{
+  			name: "Debit",
+  			data: this.seriesValue[0]
+  		},{
+  			name: "Credit",
+  			data: this.seriesValue[1]
+  		}],
+  		tooltip: {
+  			theme: 'dark'
+  		},
+  		grid: {
+  			padding: {
+  				top: -20,
+  				right: 0,
+  				left: -4,
+  				bottom: -4
+  			},
+  			strokeDashArray: 4,
+  		},
+  		xaxis: {
+  			labels: {
+  				padding: 0,
+  			},
+  			tooltip: {
+  				enabled: false
+  			},
+  			type: 'String',
+  		},
+  		yaxis: {
+  			labels: {
+  				padding: 4
+  			},
+  		},
+  		labels: this.labelsValue,
+  		colors: [tabler.getColor("yellow"), tabler.getColor("green"), tabler.getColor("primary")],
+  		legend: {
+  			show: true,
+  			position: 'bottom',
+  			offsetY: 12,
+  			markers: {
+  				width: 10,
+  				height: 10,
+  				radius: 100,
+  			},
+  			itemMargin: {
+  				horizontal: 8,
+  				vertical: 8
+  			},
+  		},
     };
 
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    const chart = new ApexCharts(this.summaryChartTarget, options);
     chart.render();
   }
 }
