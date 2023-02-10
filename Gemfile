@@ -84,3 +84,5 @@ gem "pundit"
 gem "groupdate"
 
 gem 'activerecord-postgres_enum'
+
+gem "dockerfile-rails", ">= 1.0", :group => :development
