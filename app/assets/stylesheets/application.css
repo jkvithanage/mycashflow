@@ -2,7 +2,7 @@
 @import "bootstrap-icons/font/bootstrap-icons";
 @import "@tabler/core/dist/css/tabler";
 
-// Components
+/* // Components */
 @import 'components/avatar';
 @import 'components/sessions-form';
 @import 'components/alert';
