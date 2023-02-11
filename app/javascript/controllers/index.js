@@ -7,8 +7,11 @@ import { application } from "./application"
 import AlertController from "./alert_controller"
 application.register("alert", AlertController)
 
-import ApexchartsController from "./apexcharts_controller"
-application.register("apexcharts", ApexchartsController)
+import DashCategoryPiechartController from "./dash_category_piechart_controller"
+application.register("dash-category-piechart", DashCategoryPiechartController)
+
+import DashSummaryChartController from "./dash_summary_chart_controller"
+application.register("dash-summary-chart", DashSummaryChartController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
