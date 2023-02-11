@@ -18,3 +18,6 @@ application.register("hello", HelloController)
 
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
+
+import ThemeController from "./theme_controller"
+application.register("theme", ThemeController)
