@@ -1,13 +1,23 @@
-<footer class="bg-dark text-light fixed-bottom">
-  <div class="container d-flex justify-content-between mx-auto py-4">
-    <div class="">
-      <p class="text-center m-0">
-        &copy; <%= Date.current.year %> Finance Manager
-      </p>
-    </div>
-    <div class="d-flex justify-content-center align-items-center">
-      <%= link_to "Terms of Service", "#", class: "text-decoration-none text-white ps-3" %>
-      <%= link_to "Privacy Policy", "#", class: "text-decoration-none text-white ps-3" %>
+<footer class="footer footer-light d-print-none">
+  <div class="container-xl">
+    <div class="row text-center align-items-center flex-row-reverse">
+      <div class="col-lg-auto ms-lg-auto">
+        <ul class="list-inline list-inline-dots mb-0">
+          <li class="list-inline-item">
+            <%= link_to "Terms of Service", "#", class: "link-secondary" %>
+          </li>
+          <li class="list-inline-item">
+            <%= link_to "Privacy Policy", "#", class: "link-secondary" %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+        <ul class="list-inline list-inline-dots mb-0">
+          <li class="list-inline-item">
+            <p class="m-0">Copyright &copy; <%= Date.current.year %> My Cash Flow. All rights reserved.</p>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </footer>

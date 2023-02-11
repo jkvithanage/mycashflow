@@ -9,7 +9,6 @@ export default class extends Controller {
     series: Array
   }
   initialize() {
-    console.log(this.data);
     const options = {
       chart: {
   			type: "donut",

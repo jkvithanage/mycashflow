@@ -8,25 +8,26 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-  <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <div class="my-3">
-      <%= yield %>
-    </div>
-    <div
-      class="modal fade"
-      tabindex="-1"
-      data-controller="modal"
-      data-action="turbo:frame-load->modal#open turbo:submit-end->modal#close"
-      >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <%= turbo_frame_tag "modal" %>
+  <body class="theme-light" data-controller="theme">
+    <div class="page">
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+      <div class="page-wrapper">
+        <%= yield %>
+        <div
+        class="modal fade"
+        tabindex="-1"
+        data-controller="modal"
+        data-action="turbo:frame-load->modal#open turbo:submit-end->modal#close"
+          >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <%= turbo_frame_tag "modal" %>
+            </div>
+          </div>
         </div>
       </div>
+      <%= render 'shared/footer' %>
     </div>
-    <%= render 'shared/footer' %>
-    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta16/dist/js/tabler.min.js"></script>
   </body>
 </html>
