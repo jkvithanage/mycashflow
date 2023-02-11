@@ -10,7 +10,6 @@ export default class extends Controller {
   }
 
   initialize() {
-    console.log(this.seriesValue);
     const options = {
       chart: {
   			type: "line",
