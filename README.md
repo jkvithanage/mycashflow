@@ -7,3 +7,5 @@ Demo login: test@test.com : secret
 **TODOs:**
 - Dashboard page
 - Landing page
+- Pagination
+- Analytics
