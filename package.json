@@ -10,11 +10,15 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "esbuild": "^0.16.12",
-    "sass": "^1.57.1"
+    "esbuild-plugin-copy": "^2.0.2",
+    "esbuild-rails": "^1.0.3",
+    "esbuild-sass-plugin": "^2.4.5",
+    "sass": "^1.57.1",
+    "tinymce": "^6.3.1"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "build:css": "sass ./app/assets/stylesheets/application.css:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build": "node esbuild.config.js",
+    "build:css": "sass ./app/assets/stylesheets/application.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
   "packageManager": "yarn@1.22.19"
 }
