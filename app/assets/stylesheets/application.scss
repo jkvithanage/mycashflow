@@ -1,6 +1,8 @@
-@import "bootstrap/scss/bootstrap";
-@import "bootstrap-icons/font/bootstrap-icons";
 @import "@tabler/core/dist/css/tabler";
+@import "config/fonts";
+
+// @import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons";
 
 @import 'components/avatar';
 @import 'components/sessions-form';

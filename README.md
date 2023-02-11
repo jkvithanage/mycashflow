@@ -1,9 +1,11 @@
 # Finance Manager
 **A personal finance management application**
 
-Demo: https://finmanager.fly.dev \
+Demo: https://mycashflow.herokuapp.com/
 Demo login: test@test.com : secret
 
 **TODOs:**
 - Dashboard page
 - Landing page
+- Pagination
+- Analytics
