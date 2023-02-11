@@ -10,7 +10,12 @@ export default class extends Controller {
   }
 
   initialize() {
-    console.log(this.seriesValue);
+    this.lineChart();
+    // this.pieChart();
+  }
+
+
+  lineChart(labels, serieses) {
     const options = {
       chart: {
   			type: "line",
@@ -33,7 +38,7 @@ export default class extends Controller {
   			curve: "smooth",
   		},
   		series: [{
-  			name: "Debit",
+  			name: "Debits",
   			data: this.seriesValue[0]
   		},{
   			name: "Credit",

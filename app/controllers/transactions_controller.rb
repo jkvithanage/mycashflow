@@ -3,7 +3,7 @@ class TransactionsController < ApplicationController
   skip_after_action :verify_authorized, only: [:import, :read]
 
   def index
-    @transactions = policy_scope(Transaction)
+    @transactions = policy_scope(Transaction).ordered
   end
 
   def show
