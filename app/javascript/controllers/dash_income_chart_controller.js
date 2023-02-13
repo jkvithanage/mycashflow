@@ -1,9 +1,9 @@
 import { Controller } from "@hotwired/stimulus";
 import ApexCharts from "apexcharts";
 
-// Connects to data-controller="dash-summary-chart"
+// Connects to data-controller="dash-income-chart"
 export default class extends Controller {
-  static targets = ["summaryChart"];
+  static targets = ["incomeChart"];
   static values = {
     labels: Array,
     series: Array,
@@ -12,20 +12,23 @@ export default class extends Controller {
   initialize() {
     const options = {
       chart: {
-        type: "line",
+        type: "area",
         fontFamily: "inherit",
-        height: 400,
+        height: 150,
         parentHeightOffset: 0,
         toolbar: {
           show: false,
         },
         animations: {
-          enabled: true,
-          easing: "easeinout",
+          enabled: false,
         },
       },
+      dataLabels: {
+        enabled: true,
+      },
       fill: {
-        opacity: 1,
+        opacity: 0.16,
+        type: "solid",
       },
       stroke: {
         width: 2,
@@ -34,12 +37,8 @@ export default class extends Controller {
       },
       series: [
         {
-          name: "Debit",
-          data: this.seriesValue[0],
-        },
-        {
-          name: "Credit",
-          data: this.seriesValue[1],
+          name: "series1",
+          data: this.seriesValue,
         },
       ],
       tooltip: {
@@ -61,7 +60,10 @@ export default class extends Controller {
         tooltip: {
           enabled: false,
         },
-        type: "String",
+        axisBorder: {
+          show: false,
+        },
+        type: "string",
       },
       yaxis: {
         labels: {
@@ -85,7 +87,7 @@ export default class extends Controller {
       },
     };
 
-    const chart = new ApexCharts(this.summaryChartTarget, options);
+    const chart = new ApexCharts(this.incomeChartTarget, options);
     chart.render();
   }
 }
