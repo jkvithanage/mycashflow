@@ -14,7 +14,7 @@ export default class extends Controller {
       chart: {
         type: "area",
         fontFamily: "inherit",
-        height: 150,
+        height: 80,
         parentHeightOffset: 0,
         toolbar: {
           show: false,
@@ -24,7 +24,7 @@ export default class extends Controller {
         },
       },
       dataLabels: {
-        enabled: true,
+        enabled: false,
       },
       fill: {
         opacity: 0.16,
@@ -45,17 +45,17 @@ export default class extends Controller {
         theme: "dark",
       },
       grid: {
+        show: false,
         padding: {
-          top: -20,
+          top: -30,
           right: 0,
-          left: -4,
-          bottom: -4,
+          left: -10,
+          bottom: -35,
         },
-        strokeDashArray: 4,
       },
       xaxis: {
         labels: {
-          padding: 0,
+          show: false,
         },
         tooltip: {
           enabled: false,
@@ -63,27 +63,20 @@ export default class extends Controller {
         axisBorder: {
           show: false,
         },
+        axisTicks: {
+          show: false
+        },
         type: "string",
       },
       yaxis: {
         labels: {
-          padding: 4,
+          show:false,
+
         },
       },
       labels: this.labelsValue,
       legend: {
-        show: true,
-        position: "bottom",
-        offsetY: 12,
-        markers: {
-          width: 10,
-          height: 10,
-          radius: 100,
-        },
-        itemMargin: {
-          horizontal: 8,
-          vertical: 8,
-        },
+        show: false,
       },
     };
 
