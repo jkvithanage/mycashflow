@@ -11,8 +11,22 @@
       </div>
       <div class="col-auto ms-auto">
         <div class="btn-list">
-          <%= link_to "New transaction", new_transaction_path, data: { turbo_frame: 'modal' }, class: 'btn btn-primary' %>
-          <%= link_to "Import transactions", read_transactions_path, data: { turbo_frame: 'modal' }, class: 'btn btn-secondary' %>
+          <div class="dropdown">
+            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+              <!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M16 3l0 4" /><path d="M8 3l0 4" /><path d="M4 11l16 0" /><path d="M11 15l1 0" /><path d="M12 15l0 3" /></svg>
+              All time
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">
+                Date filter goes here
+              </a>
+              <a class="dropdown-item" href="#">
+                Another action
+              </a>
+            </div>
+          </div>
+          <%= link_to "All Transactions", transactions_path, class: 'btn btn-primary' %>
         </div>
       </div>
     </div>
@@ -25,26 +39,49 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex align-items-center">
-              <div class="subheader">Income</div>
+              <div class="subheader">Total Income</div>
               <div class="ms-auto lh-1">
-                <div class="dropdown">
-                  <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Last 7 days</a>
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item active" href="#">Last 7 days</a>
-                    <a class="dropdown-item" href="#">Last 30 days</a>
-                    <a class="dropdown-item" href="#">Last 3 months</a>
-                  </div>
+                <div class="me-auto">
+                  <span class="text-green d-inline-flex align-items-center lh-1">
+                    8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 17l6 -6l4 4l8 -8"></path><path d="M14 7l7 0l0 7"></path></svg>
+                  </span>
                 </div>
               </div>
             </div>
             <div class="d-flex align-items-baseline">
-              <div class="h1 mb-0 me-2">$4,300</div>
-              <div class="me-auto">
-                <span class="text-green d-inline-flex align-items-center lh-1">
-                  8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 17l6 -6l4 4l8 -8"></path><path d="M14 7l7 0l0 7"></path></svg>
-                </span>
+              <div class="h1 mb-0 me-2"><%= @credits.values.sum %></div>
+            </div>
+          </div>
+          <div
+            data-controller="dash-income-chart"
+            data-dash-income-chart-labels-value="<%= @labels %>"
+            data-dash-income-chart-series-value="<%= @series[1] %>"
+          >
+            <div data-dash-income-chart-target="incomeChart" class="chart-sm" style="min-height: 80px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="subheader">Total Spendings</div>
+              <div class="ms-auto lh-1">
+                <div class="me-auto">
+                  <span class="text-red d-inline-flex align-items-center lh-1">
+                    5%
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trending-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M3 7l6 6l4 -4l8 8"></path>
+                      <path d="M21 10l0 7l-7 0"></path>
+                    </svg>
+                  </span>
+                </div>
               </div>
+            </div>
+            <div class="d-flex align-items-baseline">
+              <div class="h1 mb-0 me-2"><%= @debits.values.sum %></div>
             </div>
           </div>
           <div id="chart-revenue-bg" class="chart-sm" style="min-height: 80px;">
@@ -55,59 +92,21 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex align-items-center">
-              <div class="subheader">Income</div>
+              <div class="subheader">Savings</div>
               <div class="ms-auto lh-1">
-                <div class="dropdown">
-                  <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Last 7 days</a>
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item active" href="#">Last 7 days</a>
-                    <a class="dropdown-item" href="#">Last 30 days</a>
-                    <a class="dropdown-item" href="#">Last 3 months</a>
-                  </div>
+                <div class="me-auto">
+                  <span class="text-green d-inline-flex align-items-center lh-1">
+                    3% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 17l6 -6l4 4l8 -8"></path><path d="M14 7l7 0l0 7"></path></svg>
+                  </span>
                 </div>
               </div>
             </div>
             <div class="d-flex align-items-baseline">
-              <div class="h1 mb-0 me-2">$4,300</div>
-              <div class="me-auto">
-                <span class="text-green d-inline-flex align-items-center lh-1">
-                  8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 17l6 -6l4 4l8 -8"></path><path d="M14 7l7 0l0 7"></path></svg>
-                </span>
-              </div>
+              <div class="h1 mb-0 me-2"><%= @credits.values.sum - @debits.values.sum %></div>
             </div>
           </div>
-          <div id="chart-revenue-bg" class="chart-sm" style="min-height: 40px;">
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4">
-        <div class="card">
-          <div class="card-body">
-            <div class="d-flex align-items-center">
-              <div class="subheader">Income</div>
-              <div class="ms-auto lh-1">
-                <div class="dropdown">
-                  <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Last 7 days</a>
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item active" href="#">Last 7 days</a>
-                    <a class="dropdown-item" href="#">Last 30 days</a>
-                    <a class="dropdown-item" href="#">Last 3 months</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="d-flex align-items-baseline">
-              <div class="h1 mb-0 me-2">$4,300</div>
-              <div class="me-auto">
-                <span class="text-green d-inline-flex align-items-center lh-1">
-                  8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 17l6 -6l4 4l8 -8"></path><path d="M14 7l7 0l0 7"></path></svg>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div id="chart-revenue-bg" class="chart-sm" style="min-height: 40px;">
+          <div id="chart-revenue-bg" class="chart-sm" style="min-height: 80px;">
           </div>
         </div>
       </div>
