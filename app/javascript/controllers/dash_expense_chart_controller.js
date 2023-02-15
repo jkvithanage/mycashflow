@@ -1,9 +1,9 @@
 import { Controller } from "@hotwired/stimulus";
 import ApexCharts from "apexcharts";
 
-// Connects to data-controller="dash-income-chart"
+// Connects to data-controller="dash-expense-chart"
 export default class extends Controller {
-  static targets = ["incomeChart"];
+  static targets = ["expenseChart"];
   static values = {
     labels: Array,
     series: Array,
@@ -80,7 +80,7 @@ export default class extends Controller {
       },
     };
 
-    const chart = new ApexCharts(this.incomeChartTarget, options);
+    const chart = new ApexCharts(this.expenseChartTarget, options);
     chart.render();
   }
 }

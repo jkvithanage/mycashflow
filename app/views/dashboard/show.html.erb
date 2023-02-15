@@ -84,7 +84,12 @@
               <div class="h1 mb-0 me-2"><%= @debits.values.sum %></div>
             </div>
           </div>
-          <div id="chart-revenue-bg" class="chart-sm" style="min-height: 80px;">
+          <div
+            data-controller="dash-expense-chart"
+            data-dash-expense-chart-labels-value="<%= @labels %>"
+            data-dash-expense-chart-series-value="<%= @series[0] %>"
+          >
+            <div data-dash-expense-chart-target="expenseChart" class="chart-sm"></div>
           </div>
         </div>
       </div>
@@ -106,7 +111,12 @@
               <div class="h1 mb-0 me-2"><%= @credits.values.sum - @debits.values.sum %></div>
             </div>
           </div>
-          <div id="chart-revenue-bg" class="chart-sm" style="min-height: 80px;">
+          <div
+            data-controller="dash-savings-chart"
+            data-dash-savings-chart-labels-value="<%= @labels %>"
+            data-dash-savings-chart-series-value="<%= @series[1] %>"
+          >
+            <div data-dash-income-chart-target="savingsChart" class="chart-sm"></div>
           </div>
         </div>
       </div>

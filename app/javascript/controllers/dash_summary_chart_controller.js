@@ -42,6 +42,7 @@ export default class extends Controller {
           data: this.seriesValue[1],
         },
       ],
+      colors: ['#E91E63', '#008FFB'],
       tooltip: {
         theme: "dark",
       },
