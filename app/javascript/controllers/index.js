@@ -10,6 +10,9 @@ application.register("alert", AlertController)
 import DashCategoryPiechartController from "./dash_category_piechart_controller"
 application.register("dash-category-piechart", DashCategoryPiechartController)
 
+import DashExpenseChartController from "./dash_expense_chart_controller"
+application.register("dash-expense-chart", DashExpenseChartController)
+
 import DashIncomeChartController from "./dash_income_chart_controller"
 application.register("dash-income-chart", DashIncomeChartController)
 
