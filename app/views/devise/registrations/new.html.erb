@@ -1,17 +1,26 @@
 <div class="page-wrapper page-center">
-  <div class="container container-tight py-4">
-    <div class="card card-md">
+  <div class="container container-login">
+    <div class="card card-lg">
       <div class="card-body">
-        <div class="text-center ">
-          <h3>Create a new account</h3>
-          <p class="text-muted">
-            Already have an account?
-            <%- if controller_name != 'sessions' %>
-              <%= link_to "Log in", new_session_path(resource_name) %><br />
-            <% end %>
-          </p>
+        <div class="row">
+          <div class="col-md-6 d-flex flex-column pe-4 text-center">
+            <h1 class="text-primary">Start tracking your cash flow.</h1>
+            <p class="text-secondary">It takes a few minutes to setup.</p>
+            <%= image_tag 'access', class: 'mt-5' %>
+          </div>
+          <div class="col-md-6 border-start ps-4">
+            <div class="text-center">
+              <h3>Create a new account</h3>
+              <p class="text-muted">
+                Already have an account?
+                <%- if controller_name != 'sessions' %>
+                  <%= link_to "Log in", new_session_path(resource_name) %><br />
+                <% end %>
+              </p>
+            </div>
+            <%= render 'form' %>
+          </div>
         </div>
-        <%= render 'form' %>
       </div>
     </div>
   </div>
