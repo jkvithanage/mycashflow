@@ -11,5 +11,7 @@ class DashboardController < ApplicationController
     category_chart_data = current_user.transactions.group(:category).sum(:amount)
     @category_chart_labels = category_chart_data.keys.map(&:name)
     @category_chart_series = category_chart_data.values
+
+    @transactions = Transaction.last(10)
   end
 end
