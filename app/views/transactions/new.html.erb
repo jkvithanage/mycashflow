@@ -1,7 +1,8 @@
-<div class="container">
+<div class="modal-header">
   <%= turbo_frame_tag 'modal' do %>
+    <h2 class="modal-header">New transaction</h2>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     <div class="modal-body">
-      <h1>Add new transaction</h1>
       <%= render 'form', transaction: @transaction %>
     </div>
   <% end %>
