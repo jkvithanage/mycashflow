@@ -19,10 +19,7 @@ class CategoriesController < ApplicationController
     authorize @category
 
     if @category.save
-      respond_to do |format|
-        format.html { redirect_to categories_path, notice: "Category was succesfully created." }
-        format.turbo_stream
-      end
+      redirect_to categories_path, notice: "Category was succesfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,10 +38,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    respond_to do |format|
-      format.html { redirect_to categories_path, notice: "Category was successfully destroyed." }
-      format.turbo_stream
-    end
+    redirect_to categories_path, notice: "Category was successfully destroyed."
   end
 
   private

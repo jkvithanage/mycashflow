@@ -1,11 +1,10 @@
-<%= turbo_frame_tag category, class: "col-4 d-flex" do %>
-  <div class="card p-2 flex-fill">
-    <div class="d-flex justify-content-between align-items-center">
-      <strong><%= category.name %></strong>
-      <div>
-        <%= link_to edit_category_path(category), class: 'text-primary' do %><i class="bi bi-pencil-square"></i><% end %>
-        <%= link_to category_path(category), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-danger' do %><i class="bi bi-trash"></i><% end %>
-      </div>
-    </div>
-  </div>
-<% end %>
+<tr>
+  <td><%= category.name %></td>
+  <td><%= category.transactions.count %></td>
+  <td><%= category.created_at.to_date %></td>
+  <td><%= category.updated_at.to_date %></td>
+  <td>
+    <%= link_to edit_category_path(category), class: 'text-primary', data: { turbo_frame: 'modal' } do %><i class="bi bi-pencil-square"></i><% end %>
+    <%= link_to category_path(category), class: 'text-danger', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %><i class="bi bi-trash"></i><% end %>
+  </td>
+</tr>

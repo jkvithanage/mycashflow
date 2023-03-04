@@ -1,7 +1,0 @@
-<%= turbo_stream.prepend "categories", @category %>
-<%= turbo_stream.update Category.new do %>
-  <%= link_to new_category_path,
-            class: 'border border-primary rounded p-2 text-center text-primary text-body-emphasis text-decoration-none' do %>
-    <i class="bi bi-plus"></i> Add new
-  <% end %>
-<% end %>
