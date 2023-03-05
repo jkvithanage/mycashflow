@@ -6,6 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SPWQM395B"></script>
+    <%= javascript_include_tag 'analytics', async: true %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body class="theme-light" data-controller="theme">
