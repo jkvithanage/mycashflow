@@ -2,8 +2,8 @@
   <th scope="row"><%= transaction_counter + 1 %></th>
   <td><%= transaction.date.to_date %></td>
   <td><%= transaction.description %></td>
-  <td><%= transaction.transaction_type %></td>
-  <td><%= transaction.amount %></td>
+  <td class="float-end"><%= number_to_currency(transaction.amount, precision: 2) %></td>
+  <td><%= transaction.transaction_type.capitalize %></td>
   <td><%= transaction.category.name %></td>
   <td><%= transaction.account.name %></td>
   <td><%= transaction.notes %></td>
