@@ -86,3 +86,6 @@ gem "groupdate"
 gem 'activerecord-postgres_enum'
 
 gem "dockerfile-rails", ">= 1.0", :group => :development
+
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'

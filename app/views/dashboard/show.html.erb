@@ -9,13 +9,17 @@
           Dashboard
         </h3>
       </div>
-      <div class="col-auto ms-auto">
+      <div class="col-auto ms-auto d-print-none">
         <div class="btn-list">
           <div class="dropdown">
-            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle d-none d-sm-inline-block" data-bs-toggle="dropdown">
               <!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
               <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M16 3l0 4" /><path d="M8 3l0 4" /><path d="M4 11l16 0" /><path d="M11 15l1 0" /><path d="M12 15l0 3" /></svg>
               All time
+            </button>
+            <button type="button" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="dropdown">
+              <!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M16 3l0 4" /><path d="M8 3l0 4" /><path d="M4 11l16 0" /><path d="M11 15l1 0" /><path d="M12 15l0 3" /></svg>
             </button>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">
@@ -26,7 +30,6 @@
               </a>
             </div>
           </div>
-          <%= link_to "All Transactions", transactions_path, class: 'btn btn-primary' %>
         </div>
       </div>
     </div>
@@ -162,7 +165,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Date</th>
                   <th scope="col">Description</th>
-                  <th scope="col" class="float-end">Amount</th>
+                  <th scope="col" class="text-end">Amount</th>
                   <th scope="col">Type</th>
                   <th scope="col">Category</th>
                   <th scope="col">Account</th>

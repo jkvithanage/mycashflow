@@ -14,15 +14,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_220726) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  # Custom types defined in this database.
-  # Note that some types may not work with other database engines. Be careful if changing database.
-  create_enum "account_type", ["checking", "savings"]
-  create_enum "bank_name", ["westpac", "commonwealth", "anz", "nab"]
-  create_enum "transaction_type", ["debit", "credit"]
+  create_enum :account_type, [
+    "checking",
+    "savings",
+  ], force: :cascade
+
+  create_enum :bank_name, [
+    "westpac",
+    "commonwealth",
+    "anz",
+    "nab",
+  ], force: :cascade
+
+  create_enum :transaction_type, [
+    "debit",
+    "credit",
+  ], force: :cascade
 
   create_table "accounts", force: :cascade do |t|
-    t.enum "account_type", null: false, enum_type: "account_type"
     t.string "name"
+    t.enum "account_type", null: false, enum_type: "account_type"
     t.enum "bank_name", null: false, enum_type: "bank_name"
     t.string "account_number"
     t.string "owner_name"

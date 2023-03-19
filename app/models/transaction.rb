@@ -5,4 +5,6 @@ class Transaction < ApplicationRecord
   enum :transaction_type, { debit: 'debit', credit: 'credit' }, prefix: true
 
   scope :ordered, -> { order(date: :desc) }
+
+  paginates_per 10
 end

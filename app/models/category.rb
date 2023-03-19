@@ -10,4 +10,5 @@ class Category < ApplicationRecord
             }
 
   scope :ordered, -> { order(id: :desc) }
+  paginates_per 10
 end
