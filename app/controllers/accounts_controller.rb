@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
 
   def index
-    @accounts = policy_scope(Account)
+    @accounts = current_user.accounts
   end
 
   def show
@@ -10,13 +10,11 @@ class AccountsController < ApplicationController
 
   def new
     @account = Account.new
-    authorize @account
   end
 
   def create
     @account = Account.new(account_params)
     @account.user = current_user
-    authorize @account
 
     if @account.save
       redirect_to accounts_path, notice: "Account was succesfully created."
@@ -49,6 +47,5 @@ class AccountsController < ApplicationController
 
   def set_account
     @account = Account.find(params[:id])
-    authorize @account
   end
 end
