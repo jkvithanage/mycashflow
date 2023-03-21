@@ -24,13 +24,22 @@
   <div class="container-xl">
     <div class="col-12">
       <div class="card">
-        <div class="table-responsive">
-          <table class="table card-table table-vcenter table-nowrap datatable">
+        <div class="table-responsive" data-controller="cell-expand">
+          <button type="button" data-cell-expand-target="button" data-action="click->cell-expand#toggle" class="btn btn-ghost-primary btn-sm m-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 5l0 14"></path>
+              <path d="M5 12l14 0"></path>
+            </svg>Expand table
+          </button>
+          <table class="table card-table table-vcenter table-nowrap datatable table-collapse">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Date</th>
-                <th scope="col">Description</th>
+                <th scope="col">
+                  Description
+                </th>
                 <th scope="col" class="text-end">Amount</th>
                 <th scope="col">Type</th>
                 <th scope="col">Category</th>
