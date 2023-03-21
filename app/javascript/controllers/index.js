@@ -7,6 +7,9 @@ import { application } from "./application"
 import AlertController from "./alert_controller"
 application.register("alert", AlertController)
 
+import CellExpandController from "./cell_expand_controller"
+application.register("cell-expand", CellExpandController)
+
 import DashCategoryPiechartController from "./dash_category_piechart_controller"
 application.register("dash-category-piechart", DashCategoryPiechartController)
 

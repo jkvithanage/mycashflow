@@ -12,5 +12,3 @@ const trackGoogleAnalytics = (event) => {
 };
 
 document.addEventListener("turbolinks:load", trackGoogleAnalytics);
-
-console.log("hello");
