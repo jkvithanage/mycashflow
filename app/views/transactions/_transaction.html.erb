@@ -1,12 +1,20 @@
 <tr>
   <th scope="row"><%= transaction_counter + 1 %></th>
   <td><%= transaction.date.to_date %></td>
-  <td><%= transaction.description %></td>
+  <td width="200">
+    <div style="width: 200px; overflow: auto">
+      <%= transaction.description %>
+    </div>
+  </td>
   <td class="text-end"><%= number_to_currency(transaction.amount, precision: 2) %></td>
   <td><%= transaction.transaction_type.capitalize %></td>
   <td><%= transaction.category.name %></td>
   <td><%= transaction.account.name %></td>
-  <td><%= transaction.notes %></td>
+  <td width="200">
+    <div style="width: 200px; overflow: auto">
+      <%= transaction.notes %>
+    </div>
+  </td>
   <td>
     <%= link_to edit_transaction_path(transaction), class: 'text-primary', data: { turbo_frame: 'modal' } do %><i class="bi bi-pencil-square"></i><% end %>
     <%= link_to transaction_path(transaction), class: 'text-danger', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %><i class="bi bi-trash"></i><% end %>

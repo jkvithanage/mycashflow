@@ -38,12 +38,12 @@
     </div>
   </div>
 </header>
-<header class="navbar-expand-md">
-  <div class="collapse navbar-collapse" id="navbar-menu">
-    <div class="navbar navbar-light">
-      <div class="container-xl">
-        <ul class="navbar-nav">
-          <% if user_signed_in? %>
+<% if user_signed_in? %>
+  <header class="navbar-expand-md">
+    <div class="collapse navbar-collapse" id="navbar-menu">
+      <div class="navbar navbar-light">
+        <div class="container-xl">
+          <ul class="navbar-nav">
             <li class="nav-item">
               <%= link_to user_root_path, class: 'nav-link' do %>
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -111,9 +111,9 @@
                 </span>
               <% end %>
             </li>
-          <% end %>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
+<% end %>
