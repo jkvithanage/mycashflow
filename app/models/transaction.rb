@@ -6,5 +6,5 @@ class Transaction < ApplicationRecord
 
   scope :ordered, -> { order(date: :desc) }
 
-  paginates_per 10
+  paginates_per 20
 end
