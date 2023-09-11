@@ -10,13 +10,10 @@ Rails.application.routes.draw do
     root to: 'devise/sessions#new'
   end
 
-  resources :categories do
-    get '/page/:page', action: :index, on: :collection
-  end
+  resources :categories
 
   resources :accounts
   resources :transactions do
-    get '/page/:page', action: :index, on: :collection
     collection do
       get :read
       post :import

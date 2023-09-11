@@ -17,7 +17,7 @@ class TransactionsController < ApplicationController
     @transaction.category = Category.find_or_create_by(name: 'Uncategorized', user: current_user) if params[:transaction][:category].nil?
     if @transaction.save
       Transaction.update_account_balance(@transaction)
-      redirect_to transactions_path, notice: "Transaction was succesfully created."
+      redirect_to transactions_path, notice: "Transaction was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
 
   def update
     if @transaction.update(transaction_params)
-      redirect_to transactions_path, notice: "Transaction was succesfully updated."
+      redirect_to transactions_path, notice: "Transaction was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end

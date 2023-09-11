@@ -1,8 +1,8 @@
 <%= simple_form_for account do |f| %>
   <%= f.error_notification %>
   <%= f.input :name, label: 'Account name' %>
-  <%= f.input :account_type, label: 'Account type', collection: Account.account_types %>
-  <%= f.input :bank_name, collection: Account.bank_names.values %>
+  <%= f.input :account_type, label: 'Account type', collection: Account.account_types.keys.map { |k| [k.titleize, k] }, prompt: "Select an account type" %>
+  <%= f.input :bank_name, label: 'Bank name' %>
   <%= f.input :account_number, label: 'Account number' %>
   <%= f.input :owner_name %>
   <%= f.input :current_balance %>

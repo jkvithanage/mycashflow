@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
     @category.user = current_user
 
     if @category.save
-      redirect_to categories_path, notice: "Category was succesfully created."
+      redirect_to categories_path, notice: "Category was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to categories_path, notice: "Category was succesfully updated."
+      redirect_to categories_path, notice: "Category was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
