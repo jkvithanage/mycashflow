@@ -14,10 +14,13 @@ export default class extends Controller {
       chart: {
         type: "area",
         fontFamily: "inherit",
-        height: 100,
+        height: 80,
         parentHeightOffset: 0,
         toolbar: {
           show: false,
+        },
+        sparkline: {
+          enabled: true
         },
         animations: {
           enabled: false,
@@ -37,7 +40,7 @@ export default class extends Controller {
       },
       series: [
         {
-          name: "series1",
+          name: "Income",
           data: this.seriesValue,
         },
       ],
@@ -45,13 +48,7 @@ export default class extends Controller {
         theme: "dark",
       },
       grid: {
-        show: false,
-        padding: {
-          top: -30,
-          right: 0,
-          left: -10,
-          bottom: -20,
-        },
+        strokeDashArray: 4,
       },
       xaxis: {
         labels: {
