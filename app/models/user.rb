@@ -6,4 +6,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def calculate_total_debit
+    transactions.debit_type.sum(&:amount)
+  end
+
+  def calculate_total_credit
+    transactions.credit_type.sum(&:amount)
+  end
 end
