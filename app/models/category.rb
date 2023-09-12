@@ -5,7 +5,8 @@ class Category < ApplicationRecord
   validates :name,
             presence: true,
             uniqueness: {
-              scope: :user, message: 'Category is already exists.',
+              scope: :user,
+              message: 'Category already exists.',
               case_sensitive: false
             }
 

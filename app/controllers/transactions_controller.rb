@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_transaction, only: %i[show edit update destroy]
 
   def index
     @transactions = current_user.transactions.ordered.page(params[:page])
@@ -16,8 +16,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     @transaction.category = Category.find_or_create_by(name: 'Uncategorized', user: current_user) if params[:transaction][:category].nil?
     if @transaction.save
-      Transaction.update_account_balance(@transaction)
-      redirect_to transactions_path, notice: "Transaction was succesfully created."
+      redirect_to transactions_path, notice: 'Transaction was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +27,7 @@ class TransactionsController < ApplicationController
 
   def update
     if @transaction.update(transaction_params)
-      redirect_to transactions_path, notice: "Transaction was succesfully updated."
+      redirect_to transactions_path, notice: 'Transaction was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +35,7 @@ class TransactionsController < ApplicationController
 
   def destroy
     @transaction.destroy
-    redirect_to transactions_path, status: :see_other, alert: "Transaction was deleted successfully."
+    redirect_to transactions_path, status: :see_other, alert: 'Transaction was deleted successfully.'
   end
 
   def read

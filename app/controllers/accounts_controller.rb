@@ -1,12 +1,11 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_action :set_account, only: %i[show edit update destroy]
 
   def index
     @accounts = current_user.accounts
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @account = Account.new
@@ -17,18 +16,17 @@ class AccountsController < ApplicationController
     @account.user = current_user
 
     if @account.save
-      redirect_to accounts_path, notice: "Account was succesfully created."
+      redirect_to accounts_path, notice: 'Account was succesfully created.'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @account.update(account_params)
-      redirect_to accounts_path, notice: "Account was succesfully updated."
+      redirect_to accounts_path, notice: 'Account was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +34,7 @@ class AccountsController < ApplicationController
 
   def destroy
     @account.destroy
-    redirect_to accounts_path, notice: "Account was deleted successfully."
+    redirect_to accounts_path, notice: 'Account was deleted successfully.'
   end
 
   private
